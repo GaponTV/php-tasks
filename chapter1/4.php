@@ -3,34 +3,25 @@
 function checkNum($num){
     $prevDig = $num % 10;
     $num = intdiv($num, 10);
-    if(checkHigh($num, $prevDig)){
-        return true;
-    }else{
-        if(checkLow($num, $prevDig)){
-            return true;
-        }
-    }
-    return false;
-}
-
-function checkLow($num, $prevDig){
-    while($num > 0){
-        if($num % 10 >= $prevDig){
-            return false;
-        }
-        $prevDig = $num % 10;
-        $num = intdiv($num, 10);
-    }
-    return  true;
+    return (checkHigh($num, $prevDig) || checkLow($num, $prevDig));
 }
 
 function checkHigh($num, $prevDig){
     while($num > 0){
+        if($num % 10 >= $prevDig){
+            return false;
+        }
+        return checkHigh(intdiv($num, 10),$num % 10);
+    }
+    return  true;
+}
+
+function checkLow($num, $prevDig){
+    while($num > 0){
         if($num % 10 <= $prevDig){
             return false;
         }
-        $prevDig = $num % 10;
-        $num = intdiv($num, 10);
+        return checkLow(intdiv($num, 10),$num % 10);
     }
     return  true;
 }
