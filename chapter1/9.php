@@ -1,11 +1,11 @@
 <?php
-$N = 22;
+$N = 10;
 $sqrN = $N ** 2;
 $lengthNum = 0;
 $automorfFlag = true;
-for($lengthNum; intdiv($N, 10 ** $lengthNum) > 10; $lengthNum++);
+for($lengthNum; intdiv($N, 10 ** $lengthNum) > 9; $lengthNum++);
 for($i = 0; $i <= $lengthNum; $i++){
-    if($sqrN % 10 != $N % 10){
+    if($sqrN % 10 !== $N % 10){
         $automorfFlag = false;
     }
     $N = intdiv($N, 10);

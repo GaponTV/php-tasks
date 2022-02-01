@@ -3,7 +3,7 @@ $N = 66120453;
 $uniqueDig = [];
 $lengthNum = 0;
 $identicalFlag = false;
-for($lengthNum; intdiv($N, 10 ** $lengthNum) > 10; $lengthNum++);
+for($lengthNum; intdiv($N, 10 ** $lengthNum) > 9; $lengthNum++);
 for($i = 0; $i <= $lengthNum; $i++){
     for($j = 0; $j < count($uniqueDig); $j++){
         if($uniqueDig[$j] === $N % 10){
