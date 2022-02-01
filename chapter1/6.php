@@ -7,11 +7,11 @@ for($i = 0; $i < count($digits); $i ++){
         $remDigits = $digits;
         unset($remDigits[$i]);
         $remDigits = array_values($remDigits);
-        rec($remDigits, $result, $degree);
+        combDigits($remDigits, $result, $degree);
     }
 }
 
-function rec($digits, $result, $degree){
+function combDigits($digits, $result, $degree){
     if(count($digits) == 0){
         echo $result . "\n";
     }else{
@@ -21,7 +21,7 @@ function rec($digits, $result, $degree){
             $nextResult = $result + $digits[$i] * (10 ** $degree);
             unset($remDigits[$i]);
             $remDigits = array_values($remDigits);
-            rec($remDigits, $nextResult, $degree);
+            combDigits($remDigits, $nextResult, $degree);
         }
     }
 
