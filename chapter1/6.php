@@ -1,28 +1,21 @@
 <?php
-$digits = [0, 2, 3, 7];
-for($i = 0; $i < count($digits); $i ++){
-    $degree = count($digits) - 1;
-    if($digits[$i] != 0) {
-        $result = $digits[$i]* (10 ** $degree);
-        $remDigits = $digits;
-        unset($remDigits[$i]);
-        $remDigits = array_values($remDigits);
-        combDigits($remDigits, $result, $degree);
-    }
-}
-
-function combDigits($digits, $result, $degree){
-    if(count($digits) == 0){
-        echo $result . "\n";
-    }else{
-        $degree--;
-        for($i = 0; $i < count($digits); $i++){
-            $remDigits = $digits;
-            $nextResult = $result + $digits[$i] * (10 ** $degree);
-            unset($remDigits[$i]);
-            $remDigits = array_values($remDigits);
-            combDigits($remDigits, $nextResult, $degree);
+for($i = 1000; $i < 10000; $i++){
+    $digits = 7320;
+    $flagСontain = true;
+    while($digits > 0 and $flagСontain) {
+        $num = $i;
+        while ($num > 0) {
+            if($num % 10 == $digits % 10){
+                $digits = intdiv($digits, 10);
+                $flagСontain = true;
+                break;
+            }else{
+                $flagСontain = false;
+                $num = intdiv($num, 10);
+            }
         }
     }
-
+    if($flagСontain){
+        echo $i . "\n";
+    }
 }
