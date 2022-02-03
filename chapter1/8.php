@@ -1,14 +1,16 @@
 <?php
 function checkNum($num): bool
 {
-    $uniqueDig = [];
+    $uniqueDig = 0;
     for($i = 0; $i < 4; $i++){
-        for($j = 0; $j < count($uniqueDig); $j++){
-            if($uniqueDig[$j] === $num % 10){
+        $checkNum = $uniqueDig;
+        for($j = $i; $j > 0; $j--){
+            if($checkNum % 10 == $num % 10){
                 return false;
             }
+            $checkNum = intdiv($checkNum, 10);
         }
-        $uniqueDig[] = $num % 10;
+        $uniqueDig += ($num % 10) * 10 ** $i;
         $num = intdiv($num, 10);
     }
     return true;
