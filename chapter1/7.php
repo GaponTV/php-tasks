@@ -1,12 +1,12 @@
 <?php
-$N = 12340987;
+$N = 12349870000;
 $uniqueDig = 0;
 $lengthNum = 0;
 $identicalFlag = false;
 for($lengthNum; intdiv($N, 10 ** $lengthNum) > 9; $lengthNum++);
 for($i = 0; $i <= $lengthNum; $i++){
     $checkNum = $uniqueDig;
-    while($checkNum > 0){
+    for($j = $i; $j > 0; $j--){
         if($checkNum % 10 == $N % 10){
             $identicalFlag = true;
         }
